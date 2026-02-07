@@ -1,5 +1,5 @@
-import { LangGenApiClient } from "@/services/lang-gen";
-import { Language, Model } from "@/services/lang-gen/types";
+import { LangGenApiClient } from '@/services/lang-gen';
+import { Language, Model } from '@/services/lang-gen/types';
 import {
   createContext,
   ReactNode,
@@ -7,8 +7,8 @@ import {
   useEffect,
   useMemo,
   useState,
-} from "react";
-import { Alert } from "react-native";
+} from 'react';
+import { Alert } from 'react-native';
 
 interface LangGenContextValue {
   client: LangGenApiClient;
@@ -39,7 +39,7 @@ export function LangGenProvider({ children }: LangGenProviderProps) {
         setModels(models);
       })
       .catch((error) => {
-        Alert.alert("Error", error.message);
+        Alert.alert('Error', error.message);
       });
   }, [client]);
 
@@ -60,7 +60,7 @@ export function LangGenProvider({ children }: LangGenProviderProps) {
 export function useLangGen() {
   const context = useContext(LangGenContext);
   if (context === undefined) {
-    throw new Error("useLangGen must be used within a LangGenProvider");
+    throw new Error('useLangGen must be used within a LangGenProvider');
   }
 
   return context;
